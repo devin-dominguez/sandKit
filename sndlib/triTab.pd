@@ -1,0 +1,86 @@
+#N canvas 0 50 944 981 10;
+#X obj 38 502 cnv 15 480 120 empty empty inlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 633 cnv 15 480 120 empty empty outlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 32 cnv 15 480 48 empty empty triTab 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X obj 38 764 cnv 15 480 90 empty empty patch 10 22 0 32 -258958 -262144
+0;
+#X text 50 271 ARGUMENTS;
+#X text 50 291 \$1 -> (s) Table name;
+#X text 50 301 \$2 -> (i) Table size (will be rounded to nearest 2^n)
+;
+#X text 50 311 \$2 -> (i) Number of partials;
+#N canvas 423 140 399 481 triTab 0;
+#X obj 160 383 list prepend;
+#X obj 246 383 t l;
+#X obj 49 400 list;
+#X obj 49 19 loadbang;
+#X obj 160 90 until;
+#X obj 49 454 t b a;
+#X obj 49 427 list trim;
+#X msg 49 481 normalize 1;
+#X obj 192 117 + 1;
+#X obj 160 356 /;
+#X msg 160 329 1 \$1;
+#X obj 49 73 t b f;
+#X obj 111 19 table \$1;
+#X obj 49 508 s \$1;
+#X obj 160 171 mod 2;
+#X obj 160 198 sel 1 0;
+#X msg 192 225 0;
+#X obj 160 252 pow 2;
+#X obj 229 171 mod 4;
+#X obj 229 198 sel 3;
+#X msg 229 225 -1;
+#X msg 256 225 1;
+#X obj 160 144 t f f f;
+#X obj 160 302 *;
+#X obj 49 46 i \$3;
+#X obj 160 117 i 1;
+#X obj 160 225 i;
+#X obj 49 100 i \$2;
+#X msg 49 373 sinesum \$1;
+#X connect 0 0 1 0;
+#X connect 0 0 2 1;
+#X connect 1 0 0 1;
+#X connect 2 0 6 0;
+#X connect 3 0 24 0;
+#X connect 4 0 25 0;
+#X connect 5 0 7 0;
+#X connect 5 1 13 0;
+#X connect 6 0 5 0;
+#X connect 7 0 13 0;
+#X connect 8 0 25 1;
+#X connect 9 0 0 0;
+#X connect 10 0 9 0;
+#X connect 11 0 27 0;
+#X connect 11 1 4 0;
+#X connect 14 0 15 0;
+#X connect 15 0 26 0;
+#X connect 15 1 16 0;
+#X connect 16 0 0 0;
+#X connect 17 0 23 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 19 1 21 0;
+#X connect 20 0 23 1;
+#X connect 21 0 23 1;
+#X connect 22 0 14 0;
+#X connect 22 1 26 1;
+#X connect 22 2 18 0;
+#X connect 23 0 10 0;
+#X connect 24 0 11 0;
+#X connect 25 0 8 0;
+#X connect 25 0 22 0;
+#X connect 26 0 17 0;
+#X connect 27 0 28 0;
+#X connect 28 0 2 0;
+#X restore 49 814 pd triTab;
+#X text 50 161 [triTab] generates a band-limited triangle wavetable
+with a specified number of partials. This wavetable can be used with
+PD's [tabosc4~] object.;

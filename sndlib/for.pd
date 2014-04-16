@@ -1,0 +1,96 @@
+#N canvas 960 50 944 982 10;
+#X obj 38 502 cnv 15 480 120 empty empty inlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 633 cnv 15 480 120 empty empty outlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 32 cnv 15 480 48 empty empty for 10 22 0 32 -99865 -262144
+0;
+#X obj 48 552 inlet;
+#X obj 48 711 outlet;
+#X obj 48 683 r \$0.out;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 49 334 INLETS (Left to Right);
+#X text 49 384 ARGUMENTS;
+#X obj 38 764 cnv 15 480 90 empty empty patch 10 22 0 32 -258958 -262144
+0;
+#X obj 48 579 s \$0.list;
+#N canvas 1393 163 645 711 for 0;
+#X obj -46 196 until;
+#X obj -46 223 f;
+#X obj -15 223 +;
+#X obj 81 305 t f f;
+#X obj 81 352 > 0;
+#X obj 108 352 < 0;
+#X obj 27 305 t f f;
+#X obj -46 277 t f f;
+#X obj -46 399 &&;
+#X obj -46 352 <;
+#X obj 39 352 >;
+#X obj 93 399 &&;
+#X obj -46 446 ||;
+#X obj 64 593 f;
+#X obj 41 145 t f f;
+#X obj -46 250 t f f;
+#X obj -46 483 sel 1 0;
+#X obj -46 144 t b f;
+#X obj -19 172 r \$0.stop;
+#X obj -7 510 s \$0.stop;
+#X obj -46 40 r \$0.list;
+#X obj 64 620 s \$0.out;
+#X obj -46 87 pack \$1 \$2 \$3;
+#X obj -46 117 unpack f f f;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 15 0;
+#X connect 2 0 1 1;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 8 1;
+#X connect 5 0 11 1;
+#X connect 6 0 9 1;
+#X connect 6 1 10 1;
+#X connect 7 0 9 0;
+#X connect 7 1 10 0;
+#X connect 8 0 12 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 1;
+#X connect 12 0 16 0;
+#X connect 13 0 21 0;
+#X connect 14 0 2 1;
+#X connect 14 1 3 0;
+#X connect 15 0 7 0;
+#X connect 15 1 13 1;
+#X connect 16 0 13 0;
+#X connect 16 1 19 0;
+#X connect 17 0 0 0;
+#X connect 17 1 1 1;
+#X connect 18 0 0 1;
+#X connect 20 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 17 0;
+#X connect 23 1 6 0;
+#X connect 23 2 14 0;
+#X restore 49 814 pd for;
+#X text 50 203 a -> starting value;
+#X text 50 213 b -> ending value;
+#X text 50 223 c -> rate;
+#X text 50 161 [for] is an implementation of the standard for-loop
+type iterator. [for] iterates from a starting value (a) and an ending
+value (b) at a specified rate (c).;
+#X text 50 241 WARNING;
+#X text 50 261 Make sure the arguments are in the following form to
+avoid infinite loops and other nasty stuff.;
+#X text 49 444 OUTLETS;
+#X text 49 354 1st -> (b) Iterate;
+#X text 49 364 " " -> (l) Set arguments [a b c] and iterate;
+#X text 49 404 \$1 -> (f) Starting value a;
+#X text 49 414 \$2 -> (f) Ending value b;
+#X text 49 424 \$3 -> (f) Rate c;
+#X text 49 464 \$1 -> (f) Number sequence;
+#X text 49 297 if a < b then c > 0;
+#X text 49 307 if a > b then c < 0;
+#X connect 3 0 11 0;
+#X connect 5 0 4 0;

@@ -1,0 +1,42 @@
+#N canvas 878 24 1438 1033 10;
+#X obj 38 502 cnv 15 480 120 empty empty inlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 633 cnv 15 480 120 empty empty outlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 32 cnv 15 480 48 empty empty prb 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 231 INLETS (Left to Right);
+#X obj 38 764 cnv 15 480 90 empty empty patch 10 22 0 32 -258958 -262144
+0;
+#X text 50 331 ARGUMENTS;
+#X text 50 401 OUTLETS (Left to Right);
+#X text 50 251 1st -> (b) Trigger;
+#X text 50 161 Simple probability check. Sends a 1 or 0;
+#X text 50 421 1st -> (i) 1 or 0;
+#X text 50 351 \$1 -> (f) Probability 0-1;
+#X text 50 261 2nd -> (f) Probability 0-1;
+#X obj 48 552 inlet;
+#X obj 48 579 s \$0.in.0;
+#X obj 122 552 inlet;
+#X obj 122 579 s \$0.in.1;
+#X obj 48 683 r \$0.out;
+#X obj 48 710 outlet;
+#N canvas 350 147 637 572 prb 0;
+#X obj 78 168 random 1e+009;
+#X obj 78 195 / 1e+009;
+#X obj 78 111 r \$0.in.0;
+#X obj 113 231 r \$0.in.1;
+#X obj 78 258 < \$1;
+#X obj 78 285 s \$0.out;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 4 1;
+#X connect 4 0 5 0;
+#X restore 49 814 pd prb;
+#X connect 14 0 15 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;

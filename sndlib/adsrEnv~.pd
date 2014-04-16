@@ -1,0 +1,78 @@
+#N canvas 0 50 944 981 10;
+#X obj 38 502 cnv 15 480 120 empty empty inlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 633 cnv 15 480 120 empty empty outlets 10 22 0 32 -258958
+-262144 0;
+#X obj 38 32 cnv 15 480 48 empty empty adsrEnv~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 241 INLETS (Left to Right);
+#X obj 38 764 cnv 15 480 90 empty empty patch 10 22 0 32 -258958 -262144
+0;
+#X text 50 351 ARGUMENTS;
+#X obj 48 710 outlet~;
+#X text 50 441 OUTLETS (Left to Right);
+#X obj 48 552 inlet;
+#X obj 144 552 inlet;
+#X obj 48 579 s \$0.trigger;
+#X obj 144 579 s \$0.a.time;
+#X obj 234 552 inlet;
+#X obj 234 579 s \$0.d.time;
+#X obj 324 552 inlet;
+#X obj 324 579 s \$0.s.level;
+#X obj 420 552 inlet;
+#X obj 420 579 s \$0.r.time;
+#N canvas 916 123 399 324 adsrEnv~ 0;
+#X obj 74 249 vline~;
+#X obj 74 44 r \$0.trigger;
+#X obj 173 190 pack \$1 \$2 \$3;
+#X msg 173 217 1 \$1 \, \$3 \$2 \$1;
+#X obj 194 109 r \$0.a.time;
+#X obj 210 136 r \$0.d.time;
+#X obj 248 163 r \$0.s.level;
+#X obj 95 168 r \$0.r.time;
+#X obj 74 99 sel 0 1;
+#X obj 74 195 f \$4;
+#X obj 173 136 f \$1;
+#X msg 74 222 stop \, 0 \$1;
+#X obj 74 72 > 0;
+#X obj 74 276 s~ \$0.env;
+#X connect 0 0 13 0;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 10 1;
+#X connect 5 0 2 1;
+#X connect 6 0 2 2;
+#X connect 7 0 9 1;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 2 0;
+#X connect 11 0 0 0;
+#X connect 12 0 8 0;
+#X restore 49 814 pd adsrEnv~;
+#X obj 48 683 r~ \$0.env;
+#X text 50 281 2nd -> (f) Attack time;
+#X text 50 291 3rd -> (f) Decay time;
+#X text 50 311 5th -> (f) Release time;
+#X text 50 271 " " -> (i) = 0 trigger release stage;
+#X text 50 261 1st -> (f) > 0 trigger attack stage;
+#X text 50 371 \$1 -> (f) Attack time;
+#X text 50 381 \$2 -> (f) Decay time;
+#X text 50 401 \$4 -> (f) Release time;
+#X text 50 461 1st -> (~) Envelope;
+#X text 50 301 4th -> (f) Sustain level (0 to 1);
+#X text 50 391 \$3 -> (f) Sustain level (0 to 1);
+#X text 50 161 [adsrEnv~] generates a standard 4 stage envelope triggered
+by its leftmost inlet. A input greater than 0 triggers the attack \,
+decay \, and sustain stages. A inout of 0 triggers the release stage.
+;
+#X connect 10 0 12 0;
+#X connect 11 0 13 0;
+#X connect 14 0 15 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;
+#X connect 21 0 8 0;

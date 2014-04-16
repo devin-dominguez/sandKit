@@ -1,0 +1,101 @@
+#N canvas 0 45 1246 1033 10;
+#X obj 38 32 cnv 15 480 48 empty empty sandlib 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 220 empty empty Data_Conversions 10 22 0 32
+-258958 -262144 0;
+#X text 110 139 -> processing.org style map() function;
+#X obj 38 322 cnv 15 480 380 empty empty Utilities/Math 10 22 0 32
+-258958 -262144 0;
+#X text 110 370 -> simple for loop;
+#X text 110 397 -> numerical incrementer;
+#X text 110 451 -> random 0 to 1;
+#X text 110 478 -> random -1 to 1;
+#X text 110 505 -> simplified [poly] object;
+#X text 110 532 -> 2^n value multiplier;
+#X text 110 559 -> 2^n signal multiplier;
+#X obj 38 713 cnv 15 480 190 empty empty Audio_Generators 10 22 0 32
+-258958 -262144 0;
+#X text 110 788 -> band-unlimited variable width saw oscillator;
+#X text 110 815 -> band-unlimited variable width square oscillator
+;
+#X text 110 842 -> band-unlimited variable width triangle oscillator
+;
+#X text 110 761 -> band-unlimited variable width sine oscillator;
+#X text 110 869 -> 2 operator feedback fm(pm) oscillator;
+#X obj 38 914 cnv 15 480 240 empty empty Control_Data_Generators 10
+22 0 32 -258958 -262144 0;
+#X text 110 586 -> 2 channel signal switcher;
+#X text 110 962 -> quad cosine oscillator;
+#X text 110 989 -> adsr envelope generator;
+#X text 110 1016 -> sine envelope/window generator;
+#X text 110 1043 -> ramp envelope/window generator;
+#X text 110 1070 -> flat envelope/window generator;
+#X obj 38 1165 cnv 15 480 160 empty empty Audio_Processors 10 22 0
+32 -258958 -262144 0;
+#X text 110 166 -> bpm to ms;
+#X text 110 194 -> monopolar to bipolar value;
+#X text 110 220 -> bipolar to monopolar value;
+#X text 110 248 -> monopolar to bipolar signal;
+#X text 110 276 -> bipolar to monopolar signal;
+#X text 110 1240 -> simple cosine LFO/modulator;
+#X text 110 1267 -> stereo expander;
+#X text 110 1097 -> probabalistic metro;
+#X text 110 1294 -> outer space reverberator;
+#X text 110 1213 -> constant power panner;
+#X obj 38 1336 cnv 15 480 160 empty empty Wavetable_Generators 10 22
+0 32 -258958 -262144 0;
+#X text 110 1384 -> sine;
+#X obj 38 1507 cnv 15 480 320 empty empty Misc 10 22 0 32 -258958 -262144
+0;
+#X text 200 1555 -> sound visualizer;
+#X obj 48 141 map;
+#X obj 48 168 bpmtoms;
+#X obj 48 195 mtob;
+#X obj 48 222 btom;
+#X obj 48 249 mtob~;
+#X obj 48 276 btom~;
+#X obj 48 372 for;
+#X obj 48 453 rnd;
+#X obj 48 480 rnd2;
+#X obj 48 507 ezpoly;
+#X obj 48 534 octave;
+#X obj 48 561 octave~;
+#X obj 48 588 2way~;
+#X obj 48 763 sinOsc~;
+#X obj 48 790 sawOsc~;
+#X obj 48 817 sqrOsc~;
+#X obj 48 844 triOsc~;
+#X obj 48 871 fmOsc~;
+#X obj 48 964 4osc~;
+#X obj 48 991 adsrEnv~;
+#X obj 48 1018 sinEnv~;
+#X obj 48 1045 rampEnv~;
+#X obj 48 1072 flatEnv~;
+#X obj 48 1099 pmetro;
+#X obj 48 1215 cppan~;
+#X obj 48 1242 lfoMod~;
+#X obj 48 1269 boost~;
+#X obj 48 1296 dub~;
+#X obj 48 1386 sinTab;
+#X obj 48 1413 sawTab;
+#X obj 48 1440 sqrTab;
+#X obj 48 1467 triTab;
+#X obj 48 615 markov;
+#X text 110 613 -> weighted random number generator;
+#X obj 48 399 inc;
+#X obj 48 426 acc;
+#X text 110 424 -> numerical acumulator;
+#X obj 48 1557 sandScope~;
+#X obj 48 642 df;
+#X obj 48 669 prb;
+#X text 110 667 -> simple probability thing;
+#X obj 54 1678 vol~;
+#X text 110 1411 -> band-limited saw;
+#X text 110 1438 -> band-limited square;
+#X text 110 1465 -> band-limited triangle;
+#X obj 48 1126 tabread2~;
+#X text 110 1124 -> 2 point interpolating table lookup;
+#X text 110 640 -> data rate lpf sort of thing !STILL NEEDS SOME WORK!
+;
+#X text 90 1696 -> quick and dirty volume control !PROBABLY BE DELETED
+SOON!;
