@@ -1,0 +1,21 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty btom 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 231 INLETS (Left to Right);
+#X text 50 331 OUTLETS (Left to Right);
+#X text 50 251 1st -> (f) Bipolar value;
+#X text 50 351 1st -> (f) Monopolar value;
+#X text 50 161 [btom] converts a bipolar (-1 to 1) value to a monopolar
+(0 to 1) value. That's all.;
+#X floatatom 377 260 5 -100 100 0 - - -, f 5;
+#X obj 377 279 / 100;
+#X floatatom 377 301 5 0 0 0 - - -, f 5;
+#X floatatom 377 342 5 0 0 0 - - -, f 5;
+#X obj 377 320 btom;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 12 0;
+#X connect 12 0 11 0;

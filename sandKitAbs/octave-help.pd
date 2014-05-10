@@ -1,0 +1,23 @@
+#N canvas 1920 45 861 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty octave 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 161 DESCRIPTION;
+#X text 53 319 INLETS (Left to Right);
+#X text 56 255 ARGUMENTS;
+#X text 50 381 OUTLETS (Left to Right);
+#X text 50 400 1st -> (f) Transposed value;
+#X text 56 275 \$1 -> (f) Octave;
+#X text 53 339 1st -> (f) Value;
+#X text 53 349 2nd -> (f) Octave;
+#X text 50 181 [octave] is an octave transposer for frequency values.
+Given a value (v) and an octave (n) [octave] returns v*(2^n). [octave]
+also works with non-integer and negative values.;
+#X floatatom 329 294 5 0 0 2 Value - -, f 5;
+#X obj 329 313 octave 3;
+#X floatatom 329 335 5 0 0 0 - - -, f 5;
+#X floatatom 382 294 5 0 0 2 Octave - -, f 5;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 14 0 12 1;

@@ -1,0 +1,56 @@
+#N canvas 2783 487 575 411 10;
+#X obj 38 32 cnv 15 480 48 empty empty fmOscFb~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 231 INLETS (Left to Right);
+#X text 50 321 OUTLETS (Left to Right);
+#X text 50 251 1st -> (~) Carrier frequency;
+#X text 50 261 2nd -> (~) Modulator frequency;
+#X text 50 281 4th -> (~) Feedback ammount;
+#X text 50 341 1st -> (~) FM tone;
+#X obj 326 383 fmOscFb~;
+#X obj 303 245 vsl 15 64 20 2000 0 0 empty empty C 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 303 317 5 0 0 0 - - -, f 5;
+#X obj 343 245 vsl 15 64 20 2000 0 0 empty empty M 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 343 317 5 0 0 0 - - -, f 5;
+#X obj 383 245 vsl 15 64 0 2 0 0 empty empty Depth 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 383 317 5 0 0 0 - - -, f 5;
+#X obj 423 245 vsl 15 64 0 0.5 0 0 empty empty FB 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 423 317 5 0 0 0 - - -, f 5;
+#X obj 303 336 sig~ 500;
+#X obj 343 356 sig~ 700;
+#X obj 383 336 sig~ 0.5;
+#X obj 423 356 sig~ 0.05;
+#X obj 326 427 *~;
+#X obj 326 449 dac~;
+#X obj 403 412 tgl 15 0 empty empty mute 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 326 405 *~ 0.0625;
+#X text 49 160 [fmOscFb~] is a simple 2 operator frequency/phase modulation
+synthesizer with feedback control. The feedback implementation uses
+a single sample blocksize and can be a bit cpu intensitve. Use [fmOsc~]
+if feedback is not needed.;
+#X text 50 271 3rd -> (~) Modulation depth;
+#X connect 9 0 25 0;
+#X connect 10 0 11 0;
+#X connect 11 0 18 0;
+#X connect 12 0 13 0;
+#X connect 13 0 19 0;
+#X connect 14 0 15 0;
+#X connect 15 0 20 0;
+#X connect 16 0 17 0;
+#X connect 17 0 21 0;
+#X connect 18 0 9 0;
+#X connect 19 0 9 1;
+#X connect 20 0 9 2;
+#X connect 21 0 9 3;
+#X connect 22 0 23 0;
+#X connect 22 0 23 1;
+#X connect 24 0 22 1;
+#X connect 25 0 22 0;

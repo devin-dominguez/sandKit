@@ -1,0 +1,27 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty sinTab 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 241 ARGUMENTS;
+#X text 50 261 \$1 -> (s) Table name;
+#X text 50 271 \$2 -> (i) Table size (will be rounded to nearest 2^n)
+;
+#X text 50 161 [sinTab] generates a sinusoidal wavetable. A sine wavetable
+is not very useful but is included for the sake of completion. This
+wavetable can be used with PD's [tabosc4~] object.;
+#X obj 166 394 *~ 0.0625;
+#X obj 166 416 *~;
+#X obj 166 438 dac~;
+#X obj 243 401 tgl 15 0 empty empty on/off 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 166 345 sig~ 200;
+#X obj 166 372 tabosc4~ \$0.sin;
+#X obj 165 314 sinTab \$0.sin 512;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 0 9 1;
+#X connect 10 0 8 1;
+#X connect 11 0 12 0;
+#X connect 12 0 7 0;

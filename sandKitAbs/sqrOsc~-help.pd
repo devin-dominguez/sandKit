@@ -1,0 +1,44 @@
+#N canvas 2783 45 575 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty sqrOsc~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 131 DESCRIPTION;
+#X text 50 301 INLETS (Left to Right);
+#X text 50 381 OUTLETS (Left to Right);
+#X text 50 341 3rd -> (f) Set phase of oscillator;
+#X text 50 331 2nd -> (~) "Width" of duty cycle;
+#X text 50 321 1st -> (~) Frequency;
+#X text 50 191 DUTY CYCLE INFO;
+#X text 50 401 1st -> (~) Square oscillator tone;
+#X text 50 211 The duty cycle control is implemented in a non-standard
+manner. It is inversely proportional to a "width" variable. A larger
+"width" results in a shorter duty cycle. In the case of the square/pulse
+oscillator 0 "width" gives you a 50% duty cycle square wave.;
+#X text 50 151 [sqrOsc~] is a band-unlimited square/pulse oscillator
+with a variable duty cycle control for added fun.;
+#X obj 335 282 vsl 15 48 20 1000 0 0 empty empty Freq 0 -9 0 10 -262144
+-1 -1 900 1;
+#X floatatom 335 339 5 0 0 0 - - -, f 5;
+#X obj 405 282 vsl 15 48 0 25 0 0 empty empty Width 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 405 339 5 0 0 0 - - -, f 5;
+#X obj 358 439 *~;
+#X obj 358 461 dac~;
+#X obj 435 424 tgl 15 0 empty empty mute 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 358 417 *~ 0.0625;
+#X obj 405 358 sig~ 0;
+#X obj 335 358 sig~ 100;
+#X obj 358 395 sqrOsc~;
+#X connect 12 0 13 0;
+#X connect 13 0 21 0;
+#X connect 14 0 15 0;
+#X connect 15 0 20 0;
+#X connect 16 0 17 0;
+#X connect 16 0 17 1;
+#X connect 18 0 16 1;
+#X connect 19 0 16 0;
+#X connect 20 0 22 1;
+#X connect 21 0 22 0;
+#X connect 22 0 19 0;

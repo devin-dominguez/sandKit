@@ -1,0 +1,39 @@
+#N canvas 1920 45 861 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty prb 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 271 INLETS (Left to Right);
+#X text 50 210 ARGUMENTS;
+#X text 50 341 OUTLETS (Left to Right);
+#X text 50 361 1st -> (i) 1 or 0;
+#X text 50 230 \$1 -> (f) Probability 0-1;
+#X text 50 301 2nd -> (f) Probability 0-1;
+#X text 50 161 Simple probability check. Sends a 1 or 0 Normalized
+to 1;
+#X text 50 291 1st -> (b) Check;
+#X obj 333 329 prb 0.25;
+#X floatatom 386 263 5 0 100 2 Probability - -, f 5;
+#X obj 386 282 / 100;
+#X floatatom 386 304 5 0 0 0 - - -, f 5;
+#X obj 293 257 loadbang;
+#X obj 373 378 bng 30 50 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 293 328 bng 30 50 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 293 301 t b b;
+#X obj 293 279 metro 250;
+#X obj 333 351 sel 0 1;
+#X obj 333 378 bng 30 50 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 11 0 20 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 11 1;
+#X connect 15 0 19 0;
+#X connect 18 0 17 0;
+#X connect 18 1 11 0;
+#X connect 19 0 18 0;
+#X connect 20 0 21 0;
+#X connect 20 1 16 0;

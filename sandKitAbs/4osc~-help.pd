@@ -1,0 +1,59 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty 4osc~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 231 INLETS (Left to Right);
+#X text 50 161 [4osc~] is a quartet of cosinusoidal oscillators which
+are placed out of phase with each other.;
+#X text 50 251 1st -> (~) Frequency;
+#X text 50 261 2nd -> (i) Set phase;
+#X text 50 351 1st -> (~) Signal;
+#X text 50 331 OUTLETS (Left to Right);
+#X floatatom 360 211 5 0 100 2 Freq - -, f 5;
+#X floatatom 360 252 5 0 0 0 - - -, f 5;
+#X msg 406 210 0;
+#X obj 360 230 / 10;
+#X obj 359 308 snapshot~;
+#X obj 415 274 bang~;
+#X obj 339 407 vsl 15 48 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 842 1;
+#X floatatom 339 463 5 0 0 0 - - -, f 5;
+#X obj 369 328 snapshot~;
+#X obj 379 407 vsl 15 48 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4152 1;
+#X floatatom 379 463 5 0 0 0 - - -, f 5;
+#X obj 389 348 snapshot~;
+#X obj 419 407 vsl 15 48 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3858 1;
+#X floatatom 419 463 5 0 0 0 - - -, f 5;
+#X obj 409 368 snapshot~;
+#X obj 459 407 vsl 15 48 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 548 1;
+#X floatatom 459 463 5 0 0 0 - - -, f 5;
+#X text 50 371 3rd -> (~) Signal w/ PI phase shift;
+#X obj 360 273 4osc~ 2;
+#X text 402 191 Phase;
+#X text 50 361 2nd -> (~) Signal w/ 1/2 PI phase shift;
+#X text 50 381 4th -> (~) Signal w/ 3/2 PI phase shift;
+#X connect 9 0 12 0;
+#X connect 10 0 27 0;
+#X connect 11 0 27 1;
+#X connect 12 0 10 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 14 0 17 0;
+#X connect 14 0 20 0;
+#X connect 14 0 23 0;
+#X connect 15 0 16 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 27 0 13 0;
+#X connect 27 1 17 0;
+#X connect 27 2 20 0;
+#X connect 27 3 23 0;

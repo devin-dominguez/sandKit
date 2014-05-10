@@ -1,0 +1,46 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty bpmtoms 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 49 314 INLETS (Left to Right);
+#X text 49 334 1st -> (f) BPM value;
+#X text 50 238 2 = half;
+#X text 50 228 1 = whole;
+#X text 50 258 n = 1/n;
+#X text 49 364 ARGUMENTS;
+#X text 49 404 OUTLETS (Left to Right);
+#X text 49 424 1st -> (f) Duration in milliseconds.;
+#X text 50 161 [bpmtoms] converts a BPM value to a duration in milliseconds
+based on a given note length.;
+#X text 50 248 4 = quarter;
+#X text 50 211 BEAT VALUE FORMAT;
+#X text 49 384 \$1 -> (f) Beat value;
+#X text 49 344 2nd -> (f) Beat value;
+#X obj 421 219 hradio 15 1 0 5 empty empty BEAT_VALUE 0 -8 0 10 -262144
+-1 -1 0;
+#X msg 421 239 2 \$1;
+#X obj 421 261 pow;
+#X floatatom 421 283 5 0 0 0 - - -, f 5;
+#X obj 289 269 loadbang;
+#X msg 321 316 115;
+#X floatatom 361 219 5 0 0 2 BPM - -, f 5;
+#X obj 289 291 t b b;
+#X obj 329 355 metro;
+#X floatatom 361 330 10 0 0 0 - - -, f 10;
+#X obj 329 383 bng 30 50 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 361 308 bpmtoms 4;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 27 1;
+#X connect 20 0 23 0;
+#X connect 21 0 22 0;
+#X connect 22 0 27 0;
+#X connect 23 0 24 0;
+#X connect 23 1 21 0;
+#X connect 24 0 26 0;
+#X connect 25 0 24 1;
+#X connect 27 0 25 0;

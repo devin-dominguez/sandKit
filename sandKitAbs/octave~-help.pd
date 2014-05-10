@@ -1,0 +1,38 @@
+#N canvas 1920 45 861 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty octave~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 161 DESCRIPTION;
+#X text 50 251 INLETS (Left to Right);
+#X text 50 331 OUTLETS (Left to Right);
+#X text 50 271 1st -> (~) Value;
+#X text 50 281 2nd -> (~) Octave;
+#X text 50 350 1st -> (~) Transposed value;
+#X text 50 181 [octave~] is an audio-rate octave transposer for frequency
+signals. Given a signal (s) and an octave (n) [octave~] returns s*(2^n).
+[octave~] also works with non-integer and negative signals.;
+#X obj 289 325 octave~;
+#X floatatom 359 268 5 0 0 0 - - -, f 5;
+#X obj 359 309 line~;
+#X obj 289 347 osc~;
+#X obj 289 369 *~ 0.0625;
+#X obj 289 418 dac~;
+#X obj 359 248 hradio 15 1 0 4 empty empty Octave 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 289 298 sig~ 200;
+#X msg 359 287 \$1 250;
+#X obj 289 391 *~;
+#X obj 366 376 tgl 15 0 empty empty mute 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 9 0 12 0;
+#X connect 10 0 17 0;
+#X connect 11 0 9 1;
+#X connect 12 0 13 0;
+#X connect 13 0 18 0;
+#X connect 15 0 10 0;
+#X connect 16 0 9 0;
+#X connect 17 0 11 0;
+#X connect 18 0 14 0;
+#X connect 18 0 14 1;
+#X connect 19 0 18 1;

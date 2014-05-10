@@ -1,0 +1,37 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty 2way~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 271 INLETS (Left to Right);
+#X text 50 211 ARGUMENTS;
+#X text 50 361 OUTLETS (Left to Right);
+#X text 49 381 1st -> (~) Signal;
+#X text 50 291 1st -> (~) Signal 1;
+#X text 50 301 2nd -> (~) Signal 2;
+#X text 50 161 [2way~] is a signal swithcher. 2 signals go in \, 1
+signal comes out.;
+#X text 50 231 \$1 -> (f) Switching time in ms;
+#X text 50 321 4th -> (i) Channel selection;
+#X text 50 311 3td -> (~) Switching time in ms;
+#X obj 354 191 noise~;
+#X obj 407 309 hradio 15 1 0 2 empty empty Channel 0 -8 0 10 -262144
+-1 -1 1;
+#X obj 354 434 dac~;
+#X obj 371 218 osc~ 440;
+#X floatatom 389 265 5 0 1000 2 Switching_Time - -, f 5;
+#X obj 353 409 *~;
+#X obj 354 356 *~ 0.0625;
+#X obj 371 383 tgl 15 0 empty empty Mute 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 354 334 2way~ 20;
+#X connect 13 0 21 0;
+#X connect 14 0 21 3;
+#X connect 16 0 21 1;
+#X connect 17 0 21 2;
+#X connect 18 0 15 0;
+#X connect 18 0 15 1;
+#X connect 19 0 18 0;
+#X connect 20 0 18 1;
+#X connect 21 0 19 0;

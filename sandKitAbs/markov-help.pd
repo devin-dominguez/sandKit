@@ -1,0 +1,36 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty markov 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 322 INLETS (Left to Right);
+#X text 51 262 ARGUMENTS;
+#X text 48 387 OUTLETS (Left to Right);
+#X text 50 352 2nd -> (s) Name of array;
+#X text 51 282 \$1 -> (i) Length of probability table;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0.markov 10 float 3;
+#A 0 1 0 0 0 0.5 0.75 0 0.9 0.25 0;
+#X coords 0 1 9 0 150 50 1 0 0;
+#X restore 342 240 graph;
+#X obj 419 333 loadbang;
+#X obj 419 355 f \$0;
+#X msg 419 377 \$1.markov;
+#X floatatom 359 448 5 0 0 0 - - -, f 5;
+#X obj 359 310 bng 15 250 50 0 empty empty Weighted_Random 17 7 0 10
+-262144 -1 -1;
+#X obj 419 399 symbol;
+#X text 48 407 1st -> (i) weighted random value;
+#X text 50 342 1st -> (b) Output weighted random value;
+#X obj 359 426 markov 10;
+#X text 50 161 Output weighted random value based on a 0th order markov
+chain. [markov] takes an array and generates a probability table based
+on its contents. |markov| uses a poorly implemented bubble sort so
+it might not work fast enough if you have a whole lot of data.;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 14 0;
+#X connect 13 0 17 0;
+#X connect 14 0 17 1;
+#X connect 17 0 12 0;

@@ -1,0 +1,46 @@
+#N canvas 2783 45 575 411 10;
+#X obj 38 32 cnv 15 480 48 empty empty fmOsc~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 211 INLETS (Left to Right);
+#X text 50 301 OUTLETS (Left to Right);
+#X text 50 231 1st -> (~) Carrier frequency;
+#X text 50 241 2nd -> (~) Modulator frequency;
+#X text 50 321 1st -> (~) FM tone;
+#X obj 303 245 vsl 15 64 20 2000 0 0 empty empty C 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 303 317 5 0 0 0 - - -, f 5;
+#X obj 363 245 vsl 15 64 20 2000 0 0 empty empty M 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 363 317 5 0 0 0 - - -, f 5;
+#X obj 413 245 vsl 15 64 0 2 0 0 empty empty Depth 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 413 317 5 0 0 0 - - -, f 5;
+#X obj 303 336 sig~ 500;
+#X obj 363 356 sig~ 700;
+#X obj 413 336 sig~ 0.5;
+#X obj 326 427 *~;
+#X obj 326 449 dac~;
+#X obj 403 412 tgl 15 0 empty empty mute 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 326 405 *~ 0.0625;
+#X text 50 161 [fmOsc~] is a simple 2 operator frequency/phase modulation
+synthesizer without feedback.;
+#X obj 326 383 fmOsc~;
+#X text 50 251 3rd -> (~) Modulation depth;
+#X connect 8 0 9 0;
+#X connect 9 0 14 0;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 12 0 13 0;
+#X connect 13 0 16 0;
+#X connect 14 0 22 0;
+#X connect 15 0 22 1;
+#X connect 16 0 22 2;
+#X connect 17 0 18 0;
+#X connect 17 0 18 1;
+#X connect 19 0 17 1;
+#X connect 20 0 17 0;
+#X connect 22 0 20 0;

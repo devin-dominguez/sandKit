@@ -1,0 +1,36 @@
+#N canvas 1920 45 861 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty tabread2~ 10 22 0 32 -99865
+-262144 0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 241 INLETS (Left to Right);
+#X text 50 301 ARGUMENTS;
+#X text 50 351 OUTLETS (Left to Right);
+#X text 50 161 [tabread2~] is a 2 point interpolating table lookup.
+With [tabread2~] you don't need to worry about all those weird guard
+points messing up your beginning and ending values like with [tabread4~].
+This object is more for reading control data than audio data.;
+#X text 50 261 1st -> (~) Lookup index;
+#X text 50 271 2nd -> (m) Set table command;
+#X text 50 321 \$1 -> (s) Name of table;
+#X text 50 371 1st -> (~) Interpolated table value;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0.control 10 float 1;
+#A 0 1 0 0.9 0.1 0.8 0.2 0.6 0.4 0.55 0.45;
+#X coords 0 1 9 0 150 50 1 0 0;
+#X restore 333 269 graph;
+#X obj 336 329 hsl 150 15 0 9 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 333 349 5 0 0 0 - - -, f 5;
+#X obj 333 368 sig~;
+#X obj 333 390 tabread2~ \$0.control;
+#X obj 333 412 snapshot~;
+#X floatatom 333 434 5 0 0 0 - - -, f 5;
+#X obj 290 414 bang~;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 18 0 16 0;

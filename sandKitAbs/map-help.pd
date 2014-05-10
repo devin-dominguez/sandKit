@@ -1,0 +1,35 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty map 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 241 INLETS (Left to Right);
+#X text 50 341 ARGUMENTS;
+#X text 50 261 1st -> (f) Value to be scaled;
+#X text 49 424 OUTLETS;
+#X text 49 444 \$1 -> (f) Scaled value;
+#X text 50 161 [map] is PD implementation of the processing.org map()
+function. [map] linearly scales a value from one numerical range to
+another.;
+#X obj 362 395 map 2 5 0 1;
+#X floatatom 362 235 5 0 0 2 Value - -, f 5;
+#X floatatom 362 417 5 0 0 0 - - -, f 5;
+#X floatatom 380 269 5 0 0 2 I_Min - -, f 5;
+#X floatatom 399 303 5 0 0 2 I_Max - -, f 5;
+#X floatatom 417 337 5 0 0 2 O_Min - -, f 5;
+#X floatatom 436 371 5 0 0 2 O_Max - -, f 5;
+#X text 50 271 2nd -> (f) Lower value for input range;
+#X text 50 281 3rd -> (f) Upper value for input range;
+#X text 50 291 4th -> (f) Lower value for output range;
+#X text 50 301 5th -> (f) Upper value for output range;
+#X text 50 361 \$1 -> (f) Lower value for input range;
+#X text 50 371 \$2 -> (f) Upper value for input range;
+#X text 50 381 \$3 -> (f) Lower value for output range;
+#X text 50 391 \$4 -> (f) Upper value for output range;
+#X connect 9 0 11 0;
+#X connect 10 0 9 0;
+#X connect 12 0 9 1;
+#X connect 13 0 9 2;
+#X connect 14 0 9 3;
+#X connect 15 0 9 4;

@@ -1,0 +1,38 @@
+#N canvas 2711 45 647 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty df 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 321 INLETS (Left to Right);
+#X text 50 251 ARGUMENTS;
+#X text 50 391 OUTLETS (Left to Right);
+#X text 50 341 1st -> (f) Input data;
+#X text 50 411 1st -> (f) Filtered data;
+#X obj 305 284 random 100;
+#X obj 305 240 loadbang;
+#X floatatom 305 467 8 0 0 0 - - -, f 8;
+#X obj 305 440 df 0.05 1;
+#X text 50 271 \$1 -> (f) Filter coeffecient;
+#X text 50 281 \$2 -> (f) Update speed in ms;
+#X text 50 351 2nd -> (f) Filter coeffecient;
+#X text 50 361 3rd -> (f) Update speed in ms;
+#X obj 335 323 vsl 15 48 0 1 0 0 empty empty Coef 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 335 379 5 0 0 0 - - -, f 5;
+#X floatatom 365 415 5 0 0 2 update_speed - -, f 5;
+#X floatatom 305 416 5 0 0 0 - - -, f 5;
+#X obj 305 262 metro 2000;
+#X text 50 161 A shitty iir low pass filter for data. The filter coeffecient
+takes a range of 0 to 1: n*f(t) + (1-n)*f(t-1). This is calculated
+at a constant rate given in ms. You are not guaranteed to get out the
+exact value you put in so don't depend on an [==] or [sel] getting
+what they need.;
+#X connect 8 0 19 0;
+#X connect 9 0 20 0;
+#X connect 11 0 10 0;
+#X connect 16 0 17 0;
+#X connect 17 0 11 1;
+#X connect 18 0 11 2;
+#X connect 19 0 11 0;
+#X connect 20 0 8 0;

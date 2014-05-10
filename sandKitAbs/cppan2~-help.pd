@@ -1,0 +1,39 @@
+#N canvas 2711 45 647 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty cppan2~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 151 DESCRIPTION;
+#X text 50 261 INLETS (Left to Right);
+#X text 50 351 OUTLETS (Left to Right);
+#X text 50 281 1st -> (~) Signal 1;
+#X text 50 291 2nd -> (~) Signal 2;
+#X obj 323 326 osc~ 440;
+#X obj 300 277 noise~;
+#X obj 301 423 dac~;
+#X text 50 171 [cppan2~] allows for fading between two signals using
+a constant power panning curve. It can be used for crossfading \, wet/dry
+mixing \, etc.;
+#X obj 301 353 cppan2~;
+#X obj 301 375 *~ 0.5;
+#X obj 301 397 *~;
+#X obj 357 382 tgl 15 0 empty empty mute 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 396 298 hsl 64 15 -1 1 0 1 empty empty Crossfader -2 -8 0 10
+-262144 -1 -1 3150 1;
+#X floatatom 393 318 5 0 0 0 - - -, f 5;
+#X obj 393 337 lop~ 64;
+#X obj 300 299 bp~ 880 5;
+#X text 50 371 1st -> (~) Scaled signal;
+#X text 50 301 3rd -> (~) Crossfade (-1 to 1);
+#X connect 7 0 11 1;
+#X connect 8 0 18 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 9 0;
+#X connect 13 0 9 1;
+#X connect 14 0 13 1;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 11 2;
+#X connect 18 0 11 0;

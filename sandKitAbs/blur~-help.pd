@@ -1,0 +1,82 @@
+#N canvas 1920 45 1438 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty blur~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 301 INLETS (Left to Right);
+#X text 50 381 ARGUMENTS;
+#X text 50 441 OUTLETS (Left to Right);
+#X text 50 401 \$1 -> (f) Delay time in ms;
+#X text 50 411 \$2 -> (f) Feedback multiplier;
+#X text 50 420 \$3 -> (f) Low pass cutoff frequency;
+#X text 50 471 2nd -> (~) Right channel out;
+#X text 50 461 1st -> (~) Left channel out;
+#X text 50 321 1st -> (~) Left channel in;
+#X text 50 341 3rd -> (b) Delay time in ms;
+#X text 50 351 4th -> (s) Feedback multiplier;
+#X text 50 251 "NICE" SOUNDING ARGUEMENTS;
+#X text 50 361 5th -> (f) Low pass cutoff frequency;
+#X text 50 271 [blur~ 75 0.95 5000];
+#X text 50 331 1st -> (~) Right channel in;
+#X obj 454 329 vsl 15 48 1000 15000 0 0 empty empty Filter 0 -9 0 10
+-262144 -1 -1 3400 1;
+#X floatatom 454 385 6 0 15000 0 - - -, f 6;
+#X obj 405 310 vsl 15 48 0.75 0.99 0 0 empty empty Feedback 0 -9 0
+10 -262144 -1 -1 3300 1;
+#X floatatom 405 366 4 0 1 0 - - -, f 4;
+#N canvas 2928 45 430 853 testSound~ 0;
+#X obj 90 275 *~;
+#X obj 104 181 noise~;
+#X msg 176 169 0 \, 1 120 \, 0 120 120;
+#X obj 176 190 vline~;
+#X obj 236 271 *~;
+#X obj 176 142 inlet;
+#X obj 103 391 outlet~;
+#X obj 227 395 outlet~;
+#X obj 92 313 *~ 0.75;
+#X obj 221 312 *~ 0.75;
+#X obj 291 317 *~ 0.25;
+#X obj 34 312 *~ 0.25;
+#X obj 260 234 bp~ 600 6;
+#X obj 69 236 bp~ 1300 10;
+#X connect 0 0 11 0;
+#X connect 0 0 8 0;
+#X connect 1 0 12 0;
+#X connect 1 0 13 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 1;
+#X connect 3 0 4 0;
+#X connect 4 0 9 0;
+#X connect 4 0 10 0;
+#X connect 5 0 2 0;
+#X connect 8 0 7 0;
+#X connect 9 0 6 0;
+#X connect 10 0 7 0;
+#X connect 11 0 6 0;
+#X connect 12 0 4 1;
+#X connect 13 0 0 0;
+#X restore 329 390 pd testSound~;
+#X obj 319 267 bng 30 250 50 0 empty empty Noise_Burst 0 -7 0 10 -262144
+-1 -1;
+#X obj 357 289 vsl 15 48 1 200 0 0 empty empty Delay_time 0 -9 0 10
+-262144 -1 -1 1800 1;
+#X floatatom 357 350 4 0 200 0 - - -, f 4;
+#X obj 329 417 blur~ 75 0.95 5000;
+#X obj 354 454 dac~;
+#X text 50 161 [blur~] is a shitty stereo reverberation effect. If
+you want a realistic simulation of acoustic reverberation then try
+using the [rev~] \, [rev~2] \, or [rev3~] objects that come with pd.
+If you want to make something sound like it comes from outer space
+via a low budget 1950's science fiction film then use [blur~].;
+#X connect 18 0 19 0;
+#X connect 19 0 26 4;
+#X connect 20 0 21 0;
+#X connect 21 0 26 3;
+#X connect 22 0 26 0;
+#X connect 22 1 26 1;
+#X connect 23 0 22 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 2;
+#X connect 26 0 27 0;
+#X connect 26 1 27 1;

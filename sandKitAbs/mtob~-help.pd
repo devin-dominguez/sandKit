@@ -1,0 +1,32 @@
+#N canvas 2711 45 647 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty mtob~ 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 50 231 INLETS (Left to Right);
+#X text 50 331 OUTLETS (Left to Right);
+#X text 50 251 1st -> (~) Monopolar value;
+#X text 50 351 1st -> (~) Bipolar value;
+#X text 50 161 [mtob~] converts a monopolar (0 to 1) signal to a bipolar
+(-1 to 1) signal. That's all.;
+#X obj 335 301 bang~;
+#X obj 304 328 snapshot~;
+#X obj 304 350 vsl 15 48 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4514 1;
+#X floatatom 304 406 5 0 0 0 - - -, f 5;
+#X obj 384 328 snapshot~;
+#X obj 384 350 vsl 15 48 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4324 1;
+#X floatatom 384 406 5 0 0 0 - - -, f 5;
+#X obj 384 301 mtob~;
+#X obj 344 254 phasor~ 0.5;
+#X connect 8 0 9 0;
+#X connect 8 0 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 15 0 12 0;
+#X connect 16 0 9 0;
+#X connect 16 0 15 0;

@@ -1,0 +1,32 @@
+#N canvas 2783 45 575 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty for 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 141 DESCRIPTION;
+#X text 49 384 INLETS (Left to Right);
+#X text 47 317 ARGUMENTS;
+#X text 50 161 [for] is an implementation of the standard for-loop
+type iterator. [for] iterates from a starting value (a) and an ending
+value (b) at a specified rate (c).;
+#X text 50 221 WARNING;
+#X text 50 241 Make sure the arguments are in the following form to
+avoid infinite loops and other nasty stuff.;
+#X text 49 444 OUTLETS;
+#X text 49 404 1st -> (b) Iterate;
+#X text 49 414 " " -> (l) Set arguments [a b c] and iterate;
+#X text 47 337 \$1 -> (f) Starting value a;
+#X text 47 347 \$2 -> (f) Ending value b;
+#X text 47 357 \$3 -> (f) Rate c;
+#X text 49 464 \$1 -> (f) Number sequence;
+#X text 49 277 if a < b then c > 0;
+#X text 49 287 if a > b then c < 0;
+#X msg 347 310 2 37 3;
+#X obj 322 309 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 322 354 print for;
+#X obj 322 332 for 0 12 2;
+#X text 125 206 for(output = a \; a < b \; a += c) \;;
+#X connect 17 0 20 0;
+#X connect 18 0 20 0;
+#X connect 20 0 19 0;

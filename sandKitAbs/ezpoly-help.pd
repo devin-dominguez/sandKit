@@ -1,0 +1,68 @@
+#N canvas 1920 45 861 853 10;
+#X obj 38 32 cnv 15 480 48 empty empty ezpoly 10 22 0 32 -99865 -262144
+0;
+#X obj 38 91 cnv 15 480 400 empty empty about 10 22 0 32 -258958 -262144
+0;
+#X text 50 134 DESCRIPTION;
+#X text 53 300 INLETS (Left to Right);
+#X text 53 250 ARGUMENTS;
+#X text 53 330 2nd -> (i) Number of voices;
+#X text 53 270 \$1 -> (f) Number of voices;
+#X text 50 381 1st -> (f) Data with voice number;
+#X text 53 320 1st -> (l) Data;
+#X text 50 361 OUTLETS (Left to Right);
+#X text 50 154 [ezpoly] is a dumbed down version of PD's [poly] object
+for non-standard (non-MIDI) note data. [ezpoly] is for when you don't
+have noteup events or need to worry about voice stealing \, continuous
+data \, or stuff like that. You still need to send [ezpoly]'s output
+to a [route] object to get any use out of it.;
+#X obj 296 292 random 10;
+#X obj 321 314 random 10;
+#X obj 296 358 pack;
+#X obj 296 270 t b b;
+#X obj 296 245 bng 15 250 50 0 empty empty Make_Some_Data 17 7 0 10
+-262144 -1 -1;
+#X obj 296 444 unpack;
+#X floatatom 296 466 2 0 0 0 - - -, f 2;
+#X floatatom 315 466 2 0 0 0 - - -, f 2;
+#X obj 346 444 unpack;
+#X floatatom 346 466 2 0 0 0 - - -, f 2;
+#X floatatom 365 466 2 0 0 0 - - -, f 2;
+#X obj 396 444 unpack;
+#X floatatom 396 466 2 0 0 0 - - -, f 2;
+#X floatatom 415 466 2 0 0 0 - - -, f 2;
+#X obj 446 444 unpack;
+#X floatatom 446 466 2 0 0 0 - - -, f 2;
+#X floatatom 465 466 2 0 0 0 - - -, f 2;
+#X obj 296 407 route 0 1 2 3;
+#X obj 407 252 hradio 15 1 0 4 empty empty Number_of_voices 0 -8 0
+10 -262144 -1 -1 3;
+#X obj 407 272 + 1;
+#X floatatom 407 294 5 0 0 0 - - -, f 5;
+#X floatatom 321 335 2 0 0 0 - - -, f 2;
+#X floatatom 296 335 2 0 0 0 - - -, f 2;
+#X obj 296 380 ezpoly 4;
+#X connect 11 0 33 0;
+#X connect 12 0 32 0;
+#X connect 13 0 34 0;
+#X connect 14 0 11 0;
+#X connect 14 1 12 0;
+#X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 19 0 20 0;
+#X connect 19 1 21 0;
+#X connect 22 0 23 0;
+#X connect 22 1 24 0;
+#X connect 25 0 26 0;
+#X connect 25 1 27 0;
+#X connect 28 0 16 0;
+#X connect 28 1 19 0;
+#X connect 28 2 22 0;
+#X connect 28 3 25 0;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 31 0 34 1;
+#X connect 32 0 13 1;
+#X connect 33 0 13 0;
+#X connect 34 0 28 0;
